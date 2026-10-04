@@ -371,22 +371,26 @@ its generated API reference.</p>
 <thead>
 <tr>
 <th>Module</th>
+<th>What it is</th>
 <th>Reference</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/go-docutils/autodoc"><code>autodoc</code></a></td>
-<td><a href="https://pkg.go.dev/github.com/go-docutils/autodoc">pkg.go.dev</a></td>
+<td><a href="https://github.com/go-docutils/docutils"><code>docutils</code></a></td>
+<td>the engine: a reST parser matching the reference on both of its corpora, the doctree, and HTML and LaTeX writers</td>
+<td><a href="https://pkg.go.dev/github.com/go-docutils/docutils">pkg.go.dev</a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/go-docutils/docutils"><code>docutils</code></a></td>
-<td><a href="https://pkg.go.dev/github.com/go-docutils/docutils">pkg.go.dev</a></td>
+<td><a href="https://github.com/go-docutils/autodoc"><code>autodoc</code></a></td>
+<td>the other direction: a Go package's own API documentation rendered AS reST, to feed the engine</td>
+<td><a href="https://pkg.go.dev/github.com/go-docutils/autodoc">pkg.go.dev</a></td>
 </tr>
 </tbody>
 </table>
-<p>Descriptions live on the repositories themselves rather than being copied here, so
-there is one place to correct when one changes.</p>
+<p>A one-line summary each, and nothing more: what the parser does with a construct,
+and what it deliberately does not implement, lives in that repository's README beside
+the measurement that decided it.</p>
 
 
 
