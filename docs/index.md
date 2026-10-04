@@ -15,13 +15,32 @@ duplicating it here would only create a second copy to go stale.
 
 - **[Modules](modules.md)** — every module in go-docutils, with its source and its reference.
 
+## One thing to know before parsing untrusted input
+
+`docutils`' reST parser can read files, because reST has a directive that says to:
+`.. include::`. It is **disabled unless the caller passes the document's own path**
+(`rst.Options.SourcePath`), so a program that hands the parser a string cannot be
+made to open anything. With a path set, `IncludeRootPrefix` confines an absolute
+include and `LineLengthLimit` (10000 by default, the reference's own value) refuses a
+document built to be slow to parse.
+
+That module's README has a **Security** section with the whole audit: what is
+escaped, what is passed through as the reference passes it through (a `javascript:`
+URI reaches `href` in both, so a scheme allow-list belongs in the consumer), and what
+a generated `.tex` must not be used for.
+
 ## What every module here is held to
 
 - `CGO_ENABLED=0`: no cgo, and no shelling out to a command-line tool in place of a
   library.
 - Built and tested on amd64, arm64, riscv64, loong64, ppc64le and s390x — the last
   being big-endian, which keeps every on-disk and on-wire encoding honest.
-- 100% statement coverage as a CI gate, error branches included.
+- Coverage as a NUMBER each module's CI prints, not one threshold shared across the
+  org: `docutils` enforces no percentage at all (it walks a grammar whose defensive
+  branches are a safety net for a future docutils node, so its README reports the
+  figure as a reference point — the same convention docutils itself uses), and
+  `autodoc` enforces an 85% floor. The org-wide "100% as a gate" line this page used
+  to carry was true of neither.
 - BSD-3-Clause.
 
 The standard is described in full on the
