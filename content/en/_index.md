@@ -1,4 +1,9 @@
-# go-docutils
+---
+title: "Overview"
+weight: 10
+---
+
+# go-docutils {#go-docutils}
 
 reStructuredText both ways: docutils' core in pure Go — the parser and the doctree the LaTeX and PDF path is built on — and an extractor that renders a Go package's own API documentation as reST to feed it.
 
@@ -6,16 +11,16 @@ Part of the **Documents, typesetting & fonts** family of the
 [pure-Go ecosystem](https://go-desktop.github.io/) — 2 modules,
 all `CGO_ENABLED=0`.
 
-## What is here
+## What is here {#what-is-here}
 
 This site is the organisation's reference index: what each module is, and where its
 API documentation lives. The API itself is generated from the source and served by
 [pkg.go.dev](https://pkg.go.dev/), which is always current with the released tags —
 duplicating it here would only create a second copy to go stale.
 
-- **[Modules](modules.md)** — every module in go-docutils, with its source and its reference.
+- **[Modules]({{< relref "modules.md" >}})** — every module in go-docutils, with its source and its reference.
 
-## One thing to know before parsing untrusted input
+## One thing to know before parsing untrusted input {#one-thing-to-know-before-parsing-untrusted-input}
 
 `docutils`' reST parser can read files, because reST has a directive that says to:
 `.. include::`. It is **disabled unless the caller passes the document's own path**
@@ -29,7 +34,7 @@ escaped, what is passed through as the reference passes it through (a `javascrip
 URI reaches `href` in both, so a scheme allow-list belongs in the consumer), and what
 a generated `.tex` must not be used for.
 
-## What every module here is held to
+## What every module here is held to {#what-every-module-here-is-held-to}
 
 - `CGO_ENABLED=0`: no cgo, and no shelling out to a command-line tool in place of a
   library.
